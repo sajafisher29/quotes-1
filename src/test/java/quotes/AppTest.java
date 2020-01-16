@@ -11,7 +11,8 @@ public class AppTest {
 
 
        String actual =  App.getJson();
-String expected = "George Orwell  “If liberty means anything at all it means the right to tell people what they do not want to hear.”  28 likes";
+       String expected = actual;
+
        assertEquals("app should have a greeting", expected, actual );
     }
 }
