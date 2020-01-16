@@ -20,7 +20,7 @@ public class App {
         return "Hello world.";
     }
 
-    public static <JSONObject> void main(String[] args) {
+    public static void main(String[] args) {
 
         Gson gson = new Gson();
 
@@ -41,8 +41,8 @@ public class App {
 ////          System.out.println(firstQuote.toString());
 ////            System.out.println(bool);
                 Author[] authorArray = gson.fromJson(joinString.toString(),Author[].class);
-                System.out.println(authorArray[3].toString());
-//
+                System.out.println(authorArray[23].toString());
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
