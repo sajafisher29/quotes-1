@@ -1,19 +1,19 @@
 package quotes;
 
 public class Author {
-String name;
-String body;
+String author;
+String text;
 String likes;
 
-    public Author(String name, String body, String likes){
-        this.name = name;
-        this.body = body;
+    public Author(String author, String text, String likes){
+        this.author = author;
+        this.text = text;
         this.likes = likes;
 
     }
    public String toString(){
 
-        return this.name;
+        return this.author + " " + this.text + " " + this.likes;
    }
 
 
