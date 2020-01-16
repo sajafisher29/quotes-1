@@ -16,12 +16,15 @@ import com.google.gson.JsonParser;
 
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+
 
     public static void main(String[] args) {
 
+
+    }
+
+
+    public static String getJson() {
         Gson gson = new Gson();
 
         String path = "src/main/java/quotes/recentquotes.json";
@@ -30,25 +33,23 @@ public class App {
             Scanner scanner = new Scanner(new File(path));
             //boolean bool = scanner.hasNextLine();
             StringJoiner joinString = new StringJoiner(" ");
-           while(scanner.hasNextLine()){
-             joinString.add(scanner.nextLine());
+            while (scanner.hasNextLine()) {
+                joinString.add(scanner.nextLine());
 
-           }
-
+            }
 //          // String firstLine = scanner.findInLine("author");
 //         //   ArrayList<String> test = new Gson().fromJson(path, ArrayList.class);
 //           Author firstQuote = gson.fromJson(firstLine, Author.class);
 ////          System.out.println(firstQuote.toString());
 ////            System.out.println(bool);
-                Author[] authorArray = gson.fromJson(joinString.toString(),Author[].class);
-                System.out.println(authorArray[23].toString());
+            Author[] authorArray = gson.fromJson(joinString.toString(), Author[].class);
+            return authorArray[3].toString();
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
-        System.out.println(new App().getGreeting());
+        return "no info";
     }
+
 }
