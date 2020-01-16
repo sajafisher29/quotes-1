@@ -6,13 +6,8 @@ package quotes;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.nio.BufferOverflowException;
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.StringJoiner;
-
-import com.google.gson.JsonParser;
-
 
 
 public class App {
@@ -23,7 +18,7 @@ public class App {
 
     }
 
-
+// Tutorialpoint.com, geeks for geeks, and stackoverflow were all referenced for research for this lab
     public static String getJson() {
         Gson gson = new Gson();
 
@@ -31,17 +26,12 @@ public class App {
 
         try {
             Scanner scanner = new Scanner(new File(path));
-            //boolean bool = scanner.hasNextLine();
+
             StringJoiner joinString = new StringJoiner(" ");
             while (scanner.hasNextLine()) {
                 joinString.add(scanner.nextLine());
 
             }
-//          // String firstLine = scanner.findInLine("author");
-//         //   ArrayList<String> test = new Gson().fromJson(path, ArrayList.class);
-//           Author firstQuote = gson.fromJson(firstLine, Author.class);
-////          System.out.println(firstQuote.toString());
-////            System.out.println(bool);
             int random = (int)(Math.random() * 20) + 1;
             Author[] authorArray = gson.fromJson(joinString.toString(), Author[].class);
             System.out.println(authorArray[random].toString());
