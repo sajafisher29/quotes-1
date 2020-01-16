@@ -42,9 +42,10 @@ public class App {
 //           Author firstQuote = gson.fromJson(firstLine, Author.class);
 ////          System.out.println(firstQuote.toString());
 ////            System.out.println(bool);
+            int random = (int)(Math.random() * 20) + 1;
             Author[] authorArray = gson.fromJson(joinString.toString(), Author[].class);
-            return authorArray[3].toString();
-
+            System.out.println(authorArray[random].toString());
+            return authorArray[random].toString();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
