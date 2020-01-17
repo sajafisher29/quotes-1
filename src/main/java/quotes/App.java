@@ -6,6 +6,8 @@ package quotes;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
@@ -13,9 +15,39 @@ import java.util.StringJoiner;
 public class App {
 
 
+    public static String helloInternet() throws IOException {
+        URL url = new URL("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en");
+        HttpURLConnection areYouThere =  (HttpURLConnection) url.openConnection();
+        areYouThere.setRequestMethod("GET");
+
+        BufferedReader input = new BufferedReader(new InputStreamReader(areYouThere.getInputStream()));
+
+        StringBuilder pleaseWork = new StringBuilder();
+        String firstLine = input.readLine();
+        while(firstLine != null){
+            pleaseWork.append(firstLine);
+            firstLine = input.readLine();
+        }
+
+
+        return pleaseWork.toString();
+
+    }
+
+    public static String getAQuote(){
+        try {
+            return helloInternet();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return getJson();
+        }
+    }
+
+
     public static void main(String[] args) {
-
-
+        Gson gson = new Gson();
+        Quote internetQuote = gson.fromJson(getAQuote(), Quote.class);
+        System.out.println("Here is your new quote: " + internetQuote);
     }
 
 // Tutorialpoint.com, geeks for geeks, and stackoverflow were all referenced for research for this lab

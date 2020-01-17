@@ -3,16 +3,26 @@
  */
 package quotes;
 
+import com.google.gson.Gson;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static quotes.App.getAQuote;
 
 public class AppTest {
     @Test public void testAppHasAGreeting() {
-
-
        String actual =  App.getJson();
        String expected = actual;
 
        assertEquals("app should have a greeting", expected, actual );
+    }
+
+    @Test public void testInternetQuote() {
+        Gson gson = new Gson();
+        Quote internetQuote = gson.fromJson(getAQuote(), Quote.class);
+        String q = "" + internetQuote;
+        Boolean randomQuote = q.length() > 0;
+        assertTrue("should append quote to string q", randomQuote);
     }
 }
